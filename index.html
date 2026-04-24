@@ -607,6 +607,50 @@
     min-height: 52px;
   }
 
+  /* ===== HOVER EFFECTS (デスクトップのみ) ===== */
+  @media (hover: hover) {
+    /* ボタン類 */
+    .btn-line, .btn-white, .btn-line-green, .sticky-cta-btn {
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+    .btn-line:hover, .sticky-cta-btn:hover {
+      transform: translateY(-2px);
+      background: #DB7385;
+      box-shadow: 0 12px 28px rgba(232, 136, 154, 0.38);
+    }
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+    }
+    .btn-line-green:hover {
+      transform: translateY(-2px);
+      background: #05B34D;
+      box-shadow: 0 12px 28px rgba(6, 199, 85, 0.32);
+    }
+
+    /* フッターリンク */
+    footer .links a {
+      transition: color 0.2s ease;
+    }
+    footer .links a:hover {
+      color: #9A3D55;
+    }
+  }
+
+  /* ===== FADE-IN ON SCROLL (カード類・写真など) ===== */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .fade-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fade-up { opacity: 1; transform: none; transition: none; }
+  }
+
   /* ===== STICKY CTA ===== */
   .sticky-cta {
     position: fixed;
@@ -1248,6 +1292,32 @@
   <!-- ← ここにLINEのURLを入れてください -->
   <a href="https://lin.ee/7S8STHY" target="_blank" rel="noopener" class="sticky-cta-btn">公式LINEで予約する</a>
 </div>
+
+<script>
+  // スクロール連動フェードイン
+  document.addEventListener('DOMContentLoaded', function() {
+    var targets = document.querySelectorAll(
+      '.card, .voice-card, .menu-card, .menu-recommend, .profile-card, .photos img, .feeling-box, .line-members, .about .body, .hero h1, .hero .sub'
+    );
+    targets.forEach(function(el) { el.classList.add('fade-up'); });
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+      targets.forEach(function(el) { observer.observe(el); });
+    } else {
+      // 古いブラウザは即表示
+      targets.forEach(function(el) { el.classList.add('is-visible'); });
+    }
+  });
+</script>
 
 </body>
 </html>

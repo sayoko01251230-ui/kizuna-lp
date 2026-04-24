@@ -24,17 +24,117 @@
     font-family: 'M PLUS Rounded 1c', sans-serif;
     font-weight: 300;
     color: #3A2535;
-    background: #F0E8EC;
+    background: #FFF8FB;
     line-height: 1.9;
     -webkit-font-smoothing: antialiased;
     text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+    min-height: 100vh;
   }
   .wrap {
     max-width: 430px;
     margin: 0 auto;
     background: #FFF8FB;
     overflow: hidden;
+  }
+
+  /* デスクトップ専用あしらい */
+  .sec-deco-desktop { display: none; }
+
+  @media (min-width: 768px) {
+    .sec-bg { display: none; }
+  }
+
+  /* ========== TABLET (768px〜) ========== */
+  @media (min-width: 768px) {
+    .sec-deco-desktop {
+      display: block;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .wrap { max-width: 100%; }
+    .sec-inner { max-width: 900px; margin: 0 auto; padding: 96px 64px; }
+
+    .eyebrow { font-size: 13px; margin-bottom: 22px; }
+    .title { font-size: 28px; margin-bottom: 28px; }
+    .deco-line { width: 56px; margin-bottom: 40px; }
+
+    /* Hero */
+    .hero .sec-inner { padding: 120px 64px 100px; }
+    .hero h1 { font-size: clamp(36px, 5vw, 48px); line-height: 1.7; margin-bottom: 32px; }
+    .hero .sub { font-size: 17px; margin-bottom: 48px; }
+
+    /* 写真グリッド - 大きく */
+    .photos { max-width: 1100px; margin: 0 auto; gap: 8px; padding: 0 32px; }
+
+    /* About */
+    .about .body { font-size: 16px; max-width: 680px; margin: 0 auto; text-align: center; }
+
+    /* 私の想い: 3カラム横並び */
+    .why .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .card { margin-bottom: 0; height: 100%; padding: 32px 26px; }
+
+    /* ママの声: 2カラム */
+    .voice .voice-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .voice-card { margin-bottom: 0; padding: 30px 28px; }
+    .voice-card p { font-size: 16px; }
+
+    /* メニュー: おすすめは全幅、通常は2カラム */
+    .menu-recommend { max-width: 640px; margin: 0 auto 32px; padding: 32px 32px 28px; }
+    .menu-recommend h3 { font-size: 24px; }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .menu-card { margin-bottom: 0; }
+    .line-members { max-width: 760px; margin: 32px auto 0; padding: 32px 28px 28px; }
+    .line-members .menu-grid { gap: 12px; }
+
+    /* プロフィール */
+    .profile-card { max-width: 700px; margin: 0 auto; padding: 44px 40px; }
+    .avatar { width: 112px; height: 112px; }
+    .profile-name { font-size: 22px; }
+    .profile-story p { font-size: 16px; }
+
+    /* CTA */
+    .cta h2 { font-size: 28px; }
+    .cta .sub { font-size: 16px; }
+
+    /* フッター */
+    footer { padding: 48px 32px; }
+  }
+
+  /* ========== DESKTOP (1024px〜) ========== */
+  @media (min-width: 1024px) {
+    .sec-inner { max-width: 1100px; padding: 120px 80px; }
+    .hero .sec-inner { padding: 140px 80px 120px; }
+    .hero h1 { font-size: 56px; }
+    .title { font-size: 32px; }
+    .photos { max-width: 1200px; padding: 0; }
+    .why .cards-grid { max-width: 1000px; gap: 28px; }
+    .voice .voice-grid { max-width: 900px; gap: 28px; }
+    .menu-grid { max-width: 860px; gap: 16px; }
+    .line-members { max-width: 860px; }
+    .profile-card { max-width: 780px; }
   }
   section {
     position: relative;
@@ -143,6 +243,10 @@
     object-fit: cover;
     display: block;
     background: #F5D0DB;
+  }
+  /* 真ん中の写真は足が中央に来るよう左寄せでトリミング */
+  .photos img:nth-child(2) {
+    object-position: 30% center;
   }
 
   /* ===== ABOUT ===== */
@@ -503,6 +607,43 @@
     min-height: 52px;
   }
 
+  /* ===== STICKY CTA ===== */
+  .sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 248, 251, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+    z-index: 100;
+    border-top: 1px solid #F5D0DB;
+    box-shadow: 0 -6px 20px rgba(58, 37, 53, 0.06);
+    text-align: center;
+  }
+  .sticky-cta-btn {
+    display: inline-block;
+    padding: 14px 40px;
+    background: #E8889A;
+    color: #fff;
+    border-radius: 40px;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    box-shadow: 0 6px 18px rgba(232, 136, 154, 0.3);
+    min-width: 260px;
+  }
+  body { padding-bottom: 84px; }
+  @media (min-width: 768px) {
+    body { padding-bottom: 96px; }
+    .sticky-cta-btn {
+      padding: 16px 48px;
+      font-size: 16px;
+      min-width: 300px;
+    }
+  }
+
   /* ===== FOOTER ===== */
   footer {
     background: #FFF8FB;
@@ -568,6 +709,33 @@
       <circle cx="390" cy="420" r="1.5" fill="#F0B8C8"/>
       <circle cx="360" cy="460" r="1" fill="#B8D8B8"/>
     </svg>
+    <svg class="sec-deco-desktop" viewBox="0 0 1400 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="h-pink1"><stop offset="0%" stop-color="#FFD6E4" stop-opacity="0.55"/><stop offset="100%" stop-color="#FFD6E4" stop-opacity="0"/></radialGradient>
+        <radialGradient id="h-peach"><stop offset="0%" stop-color="#FFE0CC" stop-opacity="0.5"/><stop offset="100%" stop-color="#FFE0CC" stop-opacity="0"/></radialGradient>
+        <radialGradient id="h-sage"><stop offset="0%" stop-color="#C8E6C9" stop-opacity="0.45"/><stop offset="100%" stop-color="#C8E6C9" stop-opacity="0"/></radialGradient>
+        <radialGradient id="h-pink2"><stop offset="0%" stop-color="#F9C6CF" stop-opacity="0.4"/><stop offset="100%" stop-color="#F9C6CF" stop-opacity="0"/></radialGradient>
+      </defs>
+      <circle cx="120" cy="90" r="260" fill="url(#h-pink1)"/>
+      <circle cx="1280" cy="150" r="230" fill="url(#h-peach)"/>
+      <circle cx="80" cy="580" r="280" fill="url(#h-sage)"/>
+      <circle cx="1320" cy="560" r="240" fill="url(#h-pink2)"/>
+      <circle cx="700" cy="30" r="180" fill="url(#h-peach)"/>
+      <!-- さくら花びら -->
+      <g fill="#F9C6CF" opacity="0.7">
+        <path transform="translate(180,160) rotate(-20)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(280,420) rotate(35)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1180,280) rotate(-60)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1260,490) rotate(15)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(320,620) rotate(70)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+      <g fill="#FFB8C8" opacity="0.55">
+        <path transform="translate(380,240) rotate(50) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1100,120) rotate(-30) scale(0.9)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(240,540) rotate(-45) scale(0.75)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1150,580) rotate(25) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+    </svg>
     <div class="sec-inner">
       <span class="tag-pill">BABY MASSAGE · KUMAMOTO</span>
       <h1>
@@ -614,6 +782,25 @@
       <circle cx="395" cy="400" r="1" fill="#B8D8B8"/>
       <ellipse cx="400" cy="450" rx="60" ry="40" fill="#FFD6E4" opacity="0.18"/>
     </svg>
+    <svg class="sec-deco-desktop" viewBox="0 0 1400 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="a-sage"><stop offset="0%" stop-color="#C8E6C9" stop-opacity="0.45"/><stop offset="100%" stop-color="#C8E6C9" stop-opacity="0"/></radialGradient>
+        <radialGradient id="a-pink"><stop offset="0%" stop-color="#FFD6E4" stop-opacity="0.5"/><stop offset="100%" stop-color="#FFD6E4" stop-opacity="0"/></radialGradient>
+        <radialGradient id="a-peach"><stop offset="0%" stop-color="#FFE0CC" stop-opacity="0.4"/><stop offset="100%" stop-color="#FFE0CC" stop-opacity="0"/></radialGradient>
+      </defs>
+      <circle cx="100" cy="80" r="230" fill="url(#a-sage)"/>
+      <circle cx="1320" cy="520" r="260" fill="url(#a-pink)"/>
+      <circle cx="1280" cy="60" r="160" fill="url(#a-peach)"/>
+      <g fill="#F9C6CF" opacity="0.65">
+        <path transform="translate(210,180) rotate(-25)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1160,400) rotate(40)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1240,140) rotate(-55) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+      <g fill="#FFB8C8" opacity="0.5">
+        <path transform="translate(160,440) rotate(60) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1090,200) rotate(15) scale(0.75)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+    </svg>
     <div class="sec-inner">
       <div class="eyebrow">ABOUT</div>
       <h2 class="title">赤ちゃんと一緒に、<br>ママも安心できる場所。</h2>
@@ -646,25 +833,52 @@
       <circle cx="380" cy="600" r="1.5" fill="#F0B8C8"/>
       <circle cx="400" cy="560" r="1.2" fill="#B8D8B8"/>
     </svg>
+    <svg class="sec-deco-desktop" viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="w-pink1"><stop offset="0%" stop-color="#FFD6E4" stop-opacity="0.55"/><stop offset="100%" stop-color="#FFD6E4" stop-opacity="0"/></radialGradient>
+        <radialGradient id="w-peach"><stop offset="0%" stop-color="#FFE0CC" stop-opacity="0.45"/><stop offset="100%" stop-color="#FFE0CC" stop-opacity="0"/></radialGradient>
+        <radialGradient id="w-sage"><stop offset="0%" stop-color="#C8E6C9" stop-opacity="0.4"/><stop offset="100%" stop-color="#C8E6C9" stop-opacity="0"/></radialGradient>
+        <radialGradient id="w-pink2"><stop offset="0%" stop-color="#F9C6CF" stop-opacity="0.35"/><stop offset="100%" stop-color="#F9C6CF" stop-opacity="0"/></radialGradient>
+      </defs>
+      <circle cx="100" cy="120" r="260" fill="url(#w-pink1)"/>
+      <circle cx="1300" cy="200" r="240" fill="url(#w-peach)"/>
+      <circle cx="110" cy="680" r="280" fill="url(#w-sage)"/>
+      <circle cx="1320" cy="680" r="250" fill="url(#w-pink2)"/>
+      <g fill="#F9C6CF" opacity="0.7">
+        <path transform="translate(190,200) rotate(-30)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(280,460) rotate(45)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(220,680) rotate(-10)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1180,320) rotate(-55)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1140,550) rotate(25)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+      <g fill="#FFB8C8" opacity="0.55">
+        <path transform="translate(350,260) rotate(55) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1080,150) rotate(-30) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(260,600) rotate(75) scale(0.75)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1220,720) rotate(-20) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+    </svg>
     <div class="sec-inner">
       <div class="eyebrow">MY WISH</div>
       <h2 class="title">私の想い</h2>
       <div class="deco-line"></div>
 
-      <div class="card">
-        <div class="num">01</div>
-        <div class="card-title">触れることから始まる安心</div>
-        <div class="card-body">マッサージを通じて、赤ちゃんもママも体と心がほぐれていく。そこから笑顔が生まれます。</div>
-      </div>
-      <div class="card">
-        <div class="num">02</div>
-        <div class="card-title">外に出るきっかけを作る</div>
-        <div class="card-body">ひとりで抱え込まないで。ここに来ることが、あなたが外に踏み出す小さな一歩になれたら。</div>
-      </div>
-      <div class="card">
-        <div class="num">03</div>
-        <div class="card-title">ママとママをつなぐ</div>
-        <div class="card-body">同じ時期の赤ちゃんを持つママ同士が出会い、話せる。そのつながりが子育ての支えになります。</div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="num">01</div>
+          <div class="card-title">触れることから始まる安心</div>
+          <div class="card-body">マッサージを通じて、赤ちゃんもママも体と心がほぐれていく。そこから笑顔が生まれます。</div>
+        </div>
+        <div class="card">
+          <div class="num">02</div>
+          <div class="card-title">外に出るきっかけを作る</div>
+          <div class="card-body">ひとりで抱え込まないで。ここに来ることが、あなたが外に踏み出す小さな一歩になれたら。</div>
+        </div>
+        <div class="card">
+          <div class="num">03</div>
+          <div class="card-title">ママとママをつなぐ</div>
+          <div class="card-body">同じ時期の赤ちゃんを持つママ同士が出会い、話せる。そのつながりが子育ての支えになります。</div>
+        </div>
       </div>
     </div>
   </section>
@@ -687,18 +901,40 @@
       <circle cx="390" cy="380" r="1.5" fill="#F0B8C8"/>
       <circle cx="410" cy="410" r="1.2" fill="#B8D8B8"/>
     </svg>
+    <svg class="sec-deco-desktop" viewBox="0 0 1400 550" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="v-pink"><stop offset="0%" stop-color="#FFD6E4" stop-opacity="0.5"/><stop offset="100%" stop-color="#FFD6E4" stop-opacity="0"/></radialGradient>
+        <radialGradient id="v-sage"><stop offset="0%" stop-color="#C8E6C9" stop-opacity="0.4"/><stop offset="100%" stop-color="#C8E6C9" stop-opacity="0"/></radialGradient>
+        <radialGradient id="v-peach"><stop offset="0%" stop-color="#FFE0CC" stop-opacity="0.4"/><stop offset="100%" stop-color="#FFE0CC" stop-opacity="0"/></radialGradient>
+      </defs>
+      <circle cx="80" cy="80" r="230" fill="url(#v-sage)"/>
+      <circle cx="1320" cy="70" r="220" fill="url(#v-pink)"/>
+      <circle cx="1280" cy="500" r="240" fill="url(#v-peach)"/>
+      <g fill="#F9C6CF" opacity="0.7">
+        <path transform="translate(180,150) rotate(-25)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(260,400) rotate(40)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1200,200) rotate(-60)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1160,430) rotate(20)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+      <g fill="#FFB8C8" opacity="0.55">
+        <path transform="translate(330,220) rotate(60) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1100,100) rotate(15) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+    </svg>
     <div class="sec-inner">
       <div class="eyebrow">VOICE</div>
       <h2 class="title">参加したママの声</h2>
       <div class="deco-line"></div>
 
-      <div class="voice-card">
-        <p>「人見知りな子なのに、ここではずっと笑顔でいてくれて。私も気づいたらリラックスしてました。」</p>
-        <div class="who">― Aさん・7ヶ月のママ</div>
-      </div>
-      <div class="voice-card">
-        <p>「産後、家にこもりがちだったけど、ランチ会に来るようになって外に出るのが楽しみになりました。」</p>
-        <div class="who">― Bさん・4ヶ月のママ</div>
+      <div class="voice-grid">
+        <div class="voice-card">
+          <p>「人見知りな子なのに、ここではずっと笑顔でいてくれて。私も気づいたらリラックスしてました。」</p>
+          <div class="who">― Aさん・7ヶ月のママ</div>
+        </div>
+        <div class="voice-card">
+          <p>「産後、家にこもりがちだったけど、ランチ会に来るようになって外に出るのが楽しみになりました。」</p>
+          <div class="who">― Bさん・4ヶ月のママ</div>
+        </div>
       </div>
     </div>
   </section>
@@ -728,6 +964,38 @@
       <circle cx="30" cy="500" r="1.2" fill="#B8D8B8"/>
       <circle cx="380" cy="900" r="1.5" fill="#F0B8C8"/>
     </svg>
+    <svg class="sec-deco-desktop" viewBox="0 0 1400 1200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="m-pink1"><stop offset="0%" stop-color="#FFD6E4" stop-opacity="0.55"/><stop offset="100%" stop-color="#FFD6E4" stop-opacity="0"/></radialGradient>
+        <radialGradient id="m-peach"><stop offset="0%" stop-color="#FFE0CC" stop-opacity="0.45"/><stop offset="100%" stop-color="#FFE0CC" stop-opacity="0"/></radialGradient>
+        <radialGradient id="m-sage"><stop offset="0%" stop-color="#C8E6C9" stop-opacity="0.4"/><stop offset="100%" stop-color="#C8E6C9" stop-opacity="0"/></radialGradient>
+        <radialGradient id="m-pink2"><stop offset="0%" stop-color="#F9C6CF" stop-opacity="0.35"/><stop offset="100%" stop-color="#F9C6CF" stop-opacity="0"/></radialGradient>
+      </defs>
+      <circle cx="90" cy="120" r="260" fill="url(#m-pink1)"/>
+      <circle cx="1310" cy="200" r="240" fill="url(#m-peach)"/>
+      <circle cx="1330" cy="620" r="260" fill="url(#m-sage)"/>
+      <circle cx="80" cy="700" r="250" fill="url(#m-pink2)"/>
+      <circle cx="1290" cy="1100" r="260" fill="url(#m-pink1)"/>
+      <circle cx="120" cy="1100" r="250" fill="url(#m-peach)"/>
+      <g fill="#F9C6CF" opacity="0.7">
+        <path transform="translate(200,180) rotate(-25)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(300,460) rotate(45)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(240,780) rotate(-15)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(330,1040) rotate(60)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1170,320) rotate(-55)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1130,560) rotate(25)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1220,880) rotate(-10)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1170,1060) rotate(50)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+      <g fill="#FFB8C8" opacity="0.55">
+        <path transform="translate(380,280) rotate(55) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(280,620) rotate(-30) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(260,940) rotate(75) scale(0.75)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1090,160) rotate(-20) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1160,740) rotate(40) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1120,990) rotate(-35) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+    </svg>
     <div class="sec-inner">
       <div class="eyebrow">MENU</div>
       <h2 class="title">メニュー</h2>
@@ -749,27 +1017,29 @@
         </div>
       </div>
 
-      <!-- 通常メニュー 出張ベビーマッサージ -->
-      <div class="menu-card">
-        <div class="menu-body">
-          <h4>出張ベビーマッサージ</h4>
-          <div class="sub">ご自宅へ伺います ・ 2時間</div>
+      <div class="menu-grid">
+        <!-- 通常メニュー 出張ベビーマッサージ -->
+        <div class="menu-card">
+          <div class="menu-body">
+            <h4>出張ベビーマッサージ</h4>
+            <div class="sub">ご自宅へ伺います ・ 2時間</div>
+          </div>
+          <div class="menu-price">
+            <span class="amount">¥4,500</span>
+            <span class="unit">/ 回</span>
+          </div>
         </div>
-        <div class="menu-price">
-          <span class="amount">¥4,500</span>
-          <span class="unit">/ 回</span>
-        </div>
-      </div>
 
-      <!-- 通常メニュー オンライン -->
-      <div class="menu-card">
-        <div class="menu-body">
-          <h4>オンラインベビーマッサージ</h4>
-          <div class="sub">自宅から参加OK</div>
-        </div>
-        <div class="menu-price">
-          <span class="amount">¥2,500</span>
-          <span class="unit">/ 回</span>
+        <!-- 通常メニュー オンライン -->
+        <div class="menu-card">
+          <div class="menu-body">
+            <h4>オンラインベビーマッサージ</h4>
+            <div class="sub">自宅から参加OK</div>
+          </div>
+          <div class="menu-price">
+            <span class="amount">¥2,500</span>
+            <span class="unit">/ 回</span>
+          </div>
         </div>
       </div>
 
@@ -782,36 +1052,38 @@
       <div class="line-members">
         <span class="members-badge">LINE会員限定</span>
 
-        <div class="menu-card">
-          <div class="menu-body">
-            <h4>お預かりランチ会</h4>
-            <div class="sub">ベビーシッター付き添い</div>
+        <div class="menu-grid">
+          <div class="menu-card">
+            <div class="menu-body">
+              <h4>お預かりランチ会</h4>
+              <div class="sub">ベビーシッター付き添い</div>
+            </div>
+            <div class="menu-price">
+              <span class="amount">¥1,500</span>
+              <span class="unit">/ 回</span>
+            </div>
           </div>
-          <div class="menu-price">
-            <span class="amount">¥1,500</span>
-            <span class="unit">/ 回</span>
-          </div>
-        </div>
 
-        <div class="menu-card">
-          <div class="menu-body">
-            <h4>ファーストアート・手形アート</h4>
-            <div class="sub">赤ちゃんと一緒に作る</div>
+          <div class="menu-card">
+            <div class="menu-body">
+              <h4>ファーストアート・手形アート</h4>
+              <div class="sub">赤ちゃんと一緒に作る</div>
+            </div>
+            <div class="menu-price">
+              <span class="amount">¥1,000</span>
+              <span class="unit">/ 回</span>
+            </div>
           </div>
-          <div class="menu-price">
-            <span class="amount">¥1,000</span>
-            <span class="unit">/ 回</span>
-          </div>
-        </div>
 
-        <div class="menu-card">
-          <div class="menu-body">
-            <h4>カメラマン撮影会</h4>
-            <div class="sub">プロに撮ってもらおう</div>
-          </div>
-          <div class="menu-price">
-            <span class="amount">¥2,000</span>
-            <span class="unit">/ 回</span>
+          <div class="menu-card">
+            <div class="menu-body">
+              <h4>カメラマン撮影会</h4>
+              <div class="sub">プロに撮ってもらおう</div>
+            </div>
+            <div class="menu-price">
+              <span class="amount">¥2,000</span>
+              <span class="unit">/ 回</span>
+            </div>
           </div>
         </div>
 
@@ -858,6 +1130,31 @@
       <circle cx="400" cy="300" r="1.5" fill="#F0B8C8"/>
       <circle cx="30" cy="600" r="1.2" fill="#B8D8B8"/>
     </svg>
+    <svg class="sec-deco-desktop" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="p-pink1"><stop offset="0%" stop-color="#FFD6E4" stop-opacity="0.5"/><stop offset="100%" stop-color="#FFD6E4" stop-opacity="0"/></radialGradient>
+        <radialGradient id="p-peach"><stop offset="0%" stop-color="#FFE0CC" stop-opacity="0.45"/><stop offset="100%" stop-color="#FFE0CC" stop-opacity="0"/></radialGradient>
+        <radialGradient id="p-sage"><stop offset="0%" stop-color="#C8E6C9" stop-opacity="0.4"/><stop offset="100%" stop-color="#C8E6C9" stop-opacity="0"/></radialGradient>
+        <radialGradient id="p-pink2"><stop offset="0%" stop-color="#F9C6CF" stop-opacity="0.35"/><stop offset="100%" stop-color="#F9C6CF" stop-opacity="0"/></radialGradient>
+      </defs>
+      <circle cx="100" cy="140" r="240" fill="url(#p-peach)"/>
+      <circle cx="1310" cy="180" r="250" fill="url(#p-pink1)"/>
+      <circle cx="120" cy="780" r="270" fill="url(#p-sage)"/>
+      <circle cx="1320" cy="820" r="240" fill="url(#p-pink2)"/>
+      <g fill="#F9C6CF" opacity="0.7">
+        <path transform="translate(200,220) rotate(-25)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(280,500) rotate(45)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(240,740) rotate(-10)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1180,340) rotate(-55)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1140,640) rotate(25)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+      <g fill="#FFB8C8" opacity="0.55">
+        <path transform="translate(350,320) rotate(55) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1090,180) rotate(-30) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(260,600) rotate(75) scale(0.75)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1220,780) rotate(-20) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+    </svg>
     <div class="sec-inner">
       <div class="eyebrow">ABOUT ME</div>
       <h2 class="title">講師について</h2>
@@ -903,6 +1200,27 @@
       <ellipse cx="400" cy="360" rx="70" ry="50" fill="#fff" opacity="0.1"/>
       <ellipse cx="30" cy="30" rx="80" ry="55" fill="#fff" opacity="0.08"/>
     </svg>
+    <svg class="sec-deco-desktop" viewBox="0 0 1400 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="c-white1"><stop offset="0%" stop-color="#fff" stop-opacity="0.3"/><stop offset="100%" stop-color="#fff" stop-opacity="0"/></radialGradient>
+        <radialGradient id="c-white2"><stop offset="0%" stop-color="#fff" stop-opacity="0.2"/><stop offset="100%" stop-color="#fff" stop-opacity="0"/></radialGradient>
+      </defs>
+      <circle cx="90" cy="80" r="240" fill="url(#c-white1)"/>
+      <circle cx="1320" cy="120" r="260" fill="url(#c-white2)"/>
+      <circle cx="130" cy="470" r="250" fill="url(#c-white2)"/>
+      <circle cx="1300" cy="460" r="240" fill="url(#c-white1)"/>
+      <g fill="#fff" opacity="0.6">
+        <path transform="translate(200,140) rotate(-25)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(280,380) rotate(45)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1180,200) rotate(-60)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1140,400) rotate(20)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+      <g fill="#fff" opacity="0.4">
+        <path transform="translate(350,220) rotate(55) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1080,80) rotate(15) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(260,440) rotate(75) scale(0.75)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+    </svg>
     <div class="sec-inner">
       <h2>はじめての方も、<br>どうぞお気軽に。</h2>
       <p class="sub">先行予約・お問い合わせはLINEからお気軽にどうぞ</p>
@@ -924,5 +1242,12 @@
   </footer>
 
 </div>
+
+<!-- スティッキーCTA（画面下部に常時表示） -->
+<div class="sticky-cta">
+  <!-- ← ここにLINEのURLを入れてください -->
+  <a href="https://lin.ee/7S8STHY" target="_blank" rel="noopener" class="sticky-cta-btn">公式LINEで予約する</a>
+</div>
+
 </body>
 </html>

@@ -676,16 +676,20 @@
   /* ===== FADE-IN ON SCROLL (カード類・写真など) ===== */
   .fade-up {
     opacity: 0;
-    transform: translateY(32px);
-    transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1), transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(36px);
+    transition: opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1), transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .fade-up.is-visible {
     opacity: 1;
     transform: translateY(0);
   }
   /* ヒーローの文字はゆっくり順に現れる */
-  .hero h1.fade-up.is-visible { transition-delay: 0.2s; }
-  .hero .sub.fade-up.is-visible { transition-delay: 0.6s; }
+  .hero h1.fade-up,
+  .hero .sub.fade-up {
+    transition-duration: 2.4s;
+  }
+  .hero h1.fade-up.is-visible { transition-delay: 0.5s; }
+  .hero .sub.fade-up.is-visible { transition-delay: 1.3s; }
   @media (prefers-reduced-motion: reduce) {
     .fade-up { opacity: 1; transform: none; transition: none; }
   }
@@ -818,6 +822,17 @@
         <path transform="translate(240,540) rotate(-45) scale(0.75)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
         <path transform="translate(1150,580) rotate(25) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
       </g>
+      <!-- 余白に追加の花びら -->
+      <g fill="#F9C6CF" opacity="0.65">
+        <path transform="translate(40,280) rotate(-60) scale(0.9)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(90,480) rotate(30) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1360,320) rotate(40) scale(0.9)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1300,640) rotate(-20) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+      <g fill="#FFB8C8" opacity="0.45">
+        <path transform="translate(150,60) rotate(15) scale(0.7)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1250,40) rotate(-50) scale(0.75)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
     </svg>
     <div class="sec-inner">
       <span class="tag-pill">BABY MASSAGE · KUMAMOTO</span>
@@ -883,6 +898,17 @@
         <path transform="translate(160,440) rotate(60) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
         <path transform="translate(1090,200) rotate(15) scale(0.75)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
       </g>
+      <!-- 余白に追加 -->
+      <g fill="#F9C6CF" opacity="0.6">
+        <path transform="translate(70,280) rotate(-40) scale(1)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(120,520) rotate(25) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1340,240) rotate(50) scale(0.9)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1280,520) rotate(-30) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+      <g fill="#FFB8C8" opacity="0.45">
+        <path transform="translate(40,100) rotate(20) scale(0.75)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1360,80) rotate(-60) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
     </svg>
     <div class="sec-inner">
       <div class="eyebrow">ABOUT</div>
@@ -940,6 +966,19 @@
         <path transform="translate(260,600) rotate(75) scale(0.75)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
         <path transform="translate(1220,720) rotate(-20) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
       </g>
+      <!-- 余白に追加 -->
+      <g fill="#F9C6CF" opacity="0.6">
+        <path transform="translate(60,380) rotate(-40) scale(1)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(80,620) rotate(25) scale(0.9)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(140,780) rotate(-10) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1340,380) rotate(50) scale(0.95)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1280,600) rotate(-30) scale(0.9)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1320,760) rotate(15) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+      <g fill="#FFB8C8" opacity="0.45">
+        <path transform="translate(40,160) rotate(20) scale(0.75)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1360,140) rotate(-60) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
     </svg>
     <div class="sec-inner">
       <div class="eyebrow">MY WISH</div>
@@ -993,22 +1032,24 @@
       <circle cx="80" cy="80" r="230" fill="url(#v-sage)"/>
       <circle cx="1320" cy="70" r="220" fill="url(#v-pink)"/>
       <circle cx="1280" cy="500" r="240" fill="url(#v-peach)"/>
-      <!-- ハートのあしらい -->
-      <g fill="#E8889A">
-        <path transform="translate(130, 220) scale(1.4)" opacity="0.6" d="M 0 16 C -16 8 -22 -6 -14 -12 C -8 -14 -2 -10 0 -6 C 2 -10 8 -14 14 -12 C 22 -6 16 8 0 16 Z"/>
-        <path transform="translate(210, 380) scale(0.9)" opacity="0.5" d="M 0 16 C -16 8 -22 -6 -14 -12 C -8 -14 -2 -10 0 -6 C 2 -10 8 -14 14 -12 C 22 -6 16 8 0 16 Z"/>
-        <path transform="translate(80, 450) scale(0.7)" opacity="0.55" d="M 0 16 C -16 8 -22 -6 -14 -12 C -8 -14 -2 -10 0 -6 C 2 -10 8 -14 14 -12 C 22 -6 16 8 0 16 Z"/>
-        <path transform="translate(1280, 200) scale(1.3)" opacity="0.55" d="M 0 16 C -16 8 -22 -6 -14 -12 C -8 -14 -2 -10 0 -6 C 2 -10 8 -14 14 -12 C 22 -6 16 8 0 16 Z"/>
-        <path transform="translate(1180, 380) scale(0.8)" opacity="0.5" d="M 0 16 C -16 8 -22 -6 -14 -12 C -8 -14 -2 -10 0 -6 C 2 -10 8 -14 14 -12 C 22 -6 16 8 0 16 Z"/>
-        <path transform="translate(1320, 450) scale(0.7)" opacity="0.55" d="M 0 16 C -16 8 -22 -6 -14 -12 C -8 -14 -2 -10 0 -6 C 2 -10 8 -14 14 -12 C 22 -6 16 8 0 16 Z"/>
-      </g>
+      <!-- 余白に散らすさくらの花びら -->
       <g fill="#F9C6CF" opacity="0.7">
-        <path transform="translate(260,400) rotate(40)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
-        <path transform="translate(1200,200) rotate(-60)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(90,120) rotate(-35) scale(1.1)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(160,250) rotate(30)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(60,380) rotate(-20)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(220,450) rotate(55) scale(0.9)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1310,130) rotate(-50) scale(1.1)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1240,280) rotate(15)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1340,400) rotate(-25)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1180,480) rotate(60) scale(0.9)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
       </g>
       <g fill="#FFB8C8" opacity="0.55">
-        <path transform="translate(330,80) rotate(60) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
-        <path transform="translate(1100,430) rotate(15) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(30,220) rotate(-70) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(280,180) rotate(25) scale(0.75)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(140,510) rotate(80) scale(0.7)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1080,200) rotate(45) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1360,260) rotate(-40) scale(0.75)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1110,360) rotate(10) scale(0.7)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
       </g>
     </svg>
     <div class="sec-inner">
@@ -1084,6 +1125,21 @@
         <path transform="translate(1090,160) rotate(-20) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
         <path transform="translate(1160,740) rotate(40) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
         <path transform="translate(1120,990) rotate(-35) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+      <!-- 余白に追加 -->
+      <g fill="#F9C6CF" opacity="0.6">
+        <path transform="translate(60,400) rotate(-40) scale(1)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(90,760) rotate(30) scale(0.9)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(140,1120) rotate(-20) scale(0.95)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1350,400) rotate(50) scale(0.95)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1290,820) rotate(-25) scale(0.9)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1350,1150) rotate(35) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+      <g fill="#FFB8C8" opacity="0.45">
+        <path transform="translate(30,200) rotate(20) scale(0.75)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1370,80) rotate(-60) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(40,580) rotate(70) scale(0.7)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1360,580) rotate(-15) scale(0.75)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
       </g>
     </svg>
     <div class="sec-inner">
@@ -1244,6 +1300,18 @@
         <path transform="translate(260,600) rotate(75) scale(0.75)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
         <path transform="translate(1220,780) rotate(-20) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
       </g>
+      <!-- 余白に追加 -->
+      <g fill="#F9C6CF" opacity="0.6">
+        <path transform="translate(60,400) rotate(-40) scale(1)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(130,620) rotate(30) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(90,840) rotate(-15) scale(0.9)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1340,440) rotate(50) scale(0.95)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1290,660) rotate(-25) scale(0.9)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+      <g fill="#FFB8C8" opacity="0.45">
+        <path transform="translate(40,220) rotate(20) scale(0.75)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1360,240) rotate(-60) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
     </svg>
     <div class="sec-inner">
       <div class="eyebrow">ABOUT ME</div>
@@ -1309,6 +1377,17 @@
         <path transform="translate(350,220) rotate(55) scale(0.8)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
         <path transform="translate(1080,80) rotate(15) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
         <path transform="translate(260,440) rotate(75) scale(0.75)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+      <!-- 余白に追加の白い花びら -->
+      <g fill="#fff" opacity="0.55">
+        <path transform="translate(80,260) rotate(-35) scale(0.95)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(160,430) rotate(40) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1330,280) rotate(20) scale(0.9)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1250,440) rotate(-50) scale(0.85)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+      </g>
+      <g fill="#fff" opacity="0.35">
+        <path transform="translate(40,100) rotate(25) scale(0.7)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
+        <path transform="translate(1360,160) rotate(-60) scale(0.75)" d="M0 0 Q-6 -5 -5 -14 Q-2 -18 0 -15 Q2 -18 5 -14 Q6 -5 0 0 Z"/>
       </g>
     </svg>
     <div class="sec-inner">
